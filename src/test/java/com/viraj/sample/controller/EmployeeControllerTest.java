@@ -59,7 +59,7 @@ class EmployeeControllerTest {
 
     @Test
     void testSaveEmployee() throws Exception {
-        when(employeeService.saveEmployee(any(Employee.class))).thenReturn(employee);
+        when(employeeService.saveEmployee(any())).thenReturn(employee);
 
         mockMvc.perform(post("/employee/save")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -69,7 +69,7 @@ class EmployeeControllerTest {
                 .andExpect(jsonPath("$.employeeName", is("John Doe")))
                 .andExpect(jsonPath("$.employeeDescription", is("Senior Developer")));
 
-        verify(employeeService, times(1)).saveEmployee(any(Employee.class));
+        verify(employeeService, times(1)).saveEmployee(any());
     }
 
     @Test
@@ -84,7 +84,7 @@ class EmployeeControllerTest {
     void testUpdateEmployee() throws Exception {
         employee.setEmployeeName("John Updated");
 
-        when(employeeService.updateEmployee(any(Employee.class))).thenReturn(employee);
+        when(employeeService.updateEmployee(any())).thenReturn(employee);
 
         mockMvc.perform(put("/employee/update")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -93,7 +93,7 @@ class EmployeeControllerTest {
                 .andExpect(jsonPath("$.employeeId", is(1)))
                 .andExpect(jsonPath("$.employeeName", is("John Updated")));
 
-        verify(employeeService, times(1)).updateEmployee(any(Employee.class));
+        verify(employeeService, times(1)).updateEmployee(any());
     }
 
     @Test
@@ -191,13 +191,13 @@ class EmployeeControllerTest {
 
     @Test
     void testSaveEmployeeSuccess() throws Exception {
-        when(employeeService.saveEmployee(any(Employee.class))).thenReturn(employee);
+        when(employeeService.saveEmployee(any())).thenReturn(employee);
 
         mockMvc.perform(post("/employee/save")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(employee)))
                 .andExpect(status().isCreated());
 
-        verify(employeeService, times(1)).saveEmployee(any(Employee.class));
+        verify(employeeService, times(1)).saveEmployee(any());
     }
 }
