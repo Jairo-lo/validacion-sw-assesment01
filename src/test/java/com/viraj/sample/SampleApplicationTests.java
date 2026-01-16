@@ -1,16 +1,17 @@
 package com.viraj.sample;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @SpringBootTest
-public class SampleApplicationTests {
+class SampleApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+        assertTrue(true, "Application context loads successfully");
+    }
 
 }
+
